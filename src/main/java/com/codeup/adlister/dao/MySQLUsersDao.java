@@ -12,9 +12,9 @@ public class MySQLUsersDao implements Users {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUsername(),
+                config.getPassword(),
+                    config.getURL()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
