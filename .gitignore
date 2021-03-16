@@ -1,4 +1,6 @@
 *.iml
 target/
+.vscode/
+.settings/
 .idea/
 Config.java
