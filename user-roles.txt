@@ -1,0 +1,21 @@
+User roles:
+Visitor:
+  1. Views all ads
+  2. search for ads
+  3. view individual ad
+  4. View profile page
+
+Users:
+ALL OF THE PREVIOUS and
+  5. Make ads
+  6. Make profile (on registration)
+  7. View ads made by user
+  8. delete ads made by user
+  9. Update ads made by user
+  10. log in
+  11. log out
+
+Admins:
+ALL OF THE PREVIOUS and
+  12. Update any ads
+  13. Delete any ads
