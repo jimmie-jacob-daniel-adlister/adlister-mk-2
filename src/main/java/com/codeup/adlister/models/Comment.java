@@ -18,7 +18,6 @@ public class Comment {
     }
 
     public Comment(int userId, int postId, String content) {
-        this.id = id;
         this.userId = userId;
         this.postId = postId;
         this.content = content;
