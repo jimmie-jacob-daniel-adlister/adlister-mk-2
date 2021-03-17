@@ -42,7 +42,20 @@ public class MySQLCommentsDao implements Comments {
 
     @Override
     public Comment addComment(Comment newComment) {
-        return null;
+        try {
+            String insertQuery = "INSERT INTO comments( userId, postId, content) VALUES (?, ?, ?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+//            stmt.setInt(1, newComment.getId());
+            stmt.setInt(1, newComment.getUserId());
+            stmt.setInt(2, newComment.getPostId());
+            stmt.setString(3, newComment.getContent());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return newComment;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
     }
 
     private Comment extractComment(ResultSet rs) throws SQLException {
