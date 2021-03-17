@@ -14,8 +14,9 @@ ALL OF THE PREVIOUS and
   9. Update ads made by user
   10. log in
   11. log out
+  12. Add Comments to posts
 
 Admins:
 ALL OF THE PREVIOUS and
-  12. Update any ads
-  13. Delete any ads
+  13. Update any ads
+  14. Delete any ads
