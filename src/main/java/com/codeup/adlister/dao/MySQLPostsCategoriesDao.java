@@ -67,6 +67,4 @@ public class MySQLPostsCategoriesDao implements PostsCategories{
         }
         return categories;
     }
-
-
 }

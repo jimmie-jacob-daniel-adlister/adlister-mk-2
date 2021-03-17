@@ -13,6 +13,11 @@ public class Image {
         this.url=url;
         this.description=description;
     }
+    public Image( long postId, String url, String description){
+        this.postId=postId;
+        this.url=url;
+        this.description=description;
+    }
 
     public long getId() {
         return id;

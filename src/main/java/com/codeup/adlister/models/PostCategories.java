@@ -14,6 +14,10 @@ public class PostCategories {
         this.categoryId=categoryId;
         this.category=category;
     }
+    public PostCategories(long postId, long categoryId){
+        this.postId=postId;
+        this.categoryId=categoryId;
+    }
 
     public long getPostId() {
         return postId;
