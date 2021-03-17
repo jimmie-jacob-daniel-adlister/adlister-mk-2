@@ -67,5 +67,4 @@ public class MySQLCommentsDao implements Comments {
 
 }
 
-}
 
