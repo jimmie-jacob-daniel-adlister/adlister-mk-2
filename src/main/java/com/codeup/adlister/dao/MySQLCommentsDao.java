@@ -16,9 +16,12 @@ public class MySQLCommentsDao implements Comments {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                    config.getUsername(),
-                    config.getPassword(),
-                    config.getURL()
+
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
+
+
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -61,4 +64,8 @@ public class MySQLCommentsDao implements Comments {
         }
         return comments;
     }
+
 }
+
+}
+

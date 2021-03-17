@@ -17,6 +17,14 @@ public class Comment {
         this.content = content;
     }
 
+
+    public Comment(int userId, int postId, String content) {
+        this.userId = userId;
+        this.postId = postId;
+        this.content = content;
+    }
+
+
     public void setId(int id) {
         this.id = id;
     }
@@ -48,4 +56,8 @@ public class Comment {
     public String getContent() {
         return this.content;
     }
+
 }
+
+}
+
