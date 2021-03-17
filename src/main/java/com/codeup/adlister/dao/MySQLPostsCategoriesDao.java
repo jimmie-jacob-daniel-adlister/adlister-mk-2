@@ -14,8 +14,8 @@ public class MySQLPostsCategoriesDao implements PostsCategories{
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                    config.getUrl(),
-                    config.getUser(),
+                    config.getURL(),
+                    config.getUsername(),
                     config.getPassword()
             );
         } catch (SQLException e) {

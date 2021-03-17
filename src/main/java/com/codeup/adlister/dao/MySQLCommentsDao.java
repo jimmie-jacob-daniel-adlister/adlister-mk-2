@@ -17,8 +17,8 @@ public class MySQLCommentsDao implements Comments {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
 
-                    config.getUrl(),
-                    config.getUser(),
+                    config.getURL(),
+                    config.getUsername(),
                     config.getPassword()
 
 
