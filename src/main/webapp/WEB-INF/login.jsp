@@ -20,6 +20,8 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
+
+        <img src="img/unnamed.jpg" alt="" width="500">
     </div>
 </body>
 </html>
