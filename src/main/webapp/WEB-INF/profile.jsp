@@ -34,7 +34,11 @@
                     <img src="${image.url}"></img>
                 </div>
             </c:forEach>
-            <button>Delete</button>
+            <form method="POST" action="/profile">
+                <input type="hidden" name="action" value="delete" />
+                <input type="hidden" name="adNumber" value="${ad.id}" />
+                <button>Delete</button>
+            </form>
 
         </div>
     </c:forEach>
