@@ -13,4 +13,6 @@ public interface Ads {
     Long delete(Ad ad);
 
     Long edit(Ad ad);
+
+    List<Ad> search(String term);
 }
