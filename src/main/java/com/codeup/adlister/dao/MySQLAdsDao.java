@@ -122,5 +122,27 @@ public class MySQLAdsDao implements Ads {
         return null;
     }
 
+    @Override
+    public Ad getAdFromPostId(Long postId) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM posts WHERE id=?");
+            stmt.setLong(1, postId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                return new Ad(
+                        rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getDouble("price")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
 
 }
