@@ -14,6 +14,25 @@
             <div class="col-md-6">
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
+                <div>Comments</div>
+                <c:forEach var="category" items="${ad.categories}">
+                    <div class="col-md-6">
+                        <p>${category.getCategory()}</p>
+                    </div>
+                </c:forEach>
+                <c:forEach var="comment" items="${ad.comments}">
+                    <div class="col-md-6">
+                        <h2>${comment.userId}</h2>
+                        <p>${comment.content}</p>
+                    </div>
+                </c:forEach>
+                <c:forEach var="image" items="${ad.images}">
+                    <div class="col-md-6">
+                        <h2>${image.description}</h2>
+                        <img src="${image.url}"></img>
+                    </div>
+                </c:forEach>
+
             </div>
         </c:forEach>
     </div>
