@@ -34,6 +34,7 @@
                     <img src="${image.url}"></img>
                 </div>
             </c:forEach>
+            <button>Delete</button>
 
         </div>
     </c:forEach>
