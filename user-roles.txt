@@ -1,20 +1,20 @@
 User roles:
 Visitor:
-  1. Views all ads
-  2. search for ads
+  1. Views all ads - check
+  2. search for ads - backend need test
   3. view individual ad
-  4. View profile page
+  4. View profile page - checked
 
 Users:
 ALL OF THE PREVIOUS and
-  5. Make ads
+  5. Make ads - check
   6. Make profile (on registration)
-  7. View ads made by user
-  8. delete ads made by user
+  7. View ads made by user - check
+  8. delete ads made by user - on backend
   9. Update ads made by user
-  10. log in
-  11. log out
-  12. Add Comments to posts
+  10. log in - check
+  11. log out - theoritcally yes
+  12. Add Comments to posts -
 
 Admins:
 ALL OF THE PREVIOUS and
