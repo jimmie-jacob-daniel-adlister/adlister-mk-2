@@ -23,10 +23,14 @@
             <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
         </div>
 
-<%--        <div class="form-group">--%>
-<%--            <label for="imageURL">Image URL:</label>--%>
-<%--            <input type="text" id="imageURL" name="imageURL" class="form-control">--%>
-<%--        </div>--%>
+        <div class="form-group">
+            <label for="imageURL">Image URL:</label>
+            <input type="text" id="imageURL" name="imageURL" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="imageDescription">Image Description:</label>
+            <input type="text" id="imageDescription" name="imageDescription" class="form-control">
+        </div>
         <input type="submit" class="btn btn-block btn-primary" />
     </form>
 </div>
