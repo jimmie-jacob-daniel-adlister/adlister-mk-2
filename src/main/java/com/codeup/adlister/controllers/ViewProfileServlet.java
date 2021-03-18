@@ -29,7 +29,7 @@ public class ViewProfileServlet extends HttpServlet {
             ad.setImages(images);
             int commentsId= (int) postId;
             List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
-            ad.setComments(ad.getComments());
+            ad.setComments(comments);
         };
         request.setAttribute("ads", ads);
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
