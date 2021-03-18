@@ -1,2 +1,3 @@
 <title>${param.title}</title>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.css' integrity='sha512-zTLt9JxNhBSmCBcrxhMvLQFF2XI0DZ1WkWIYCuj/Z5NhK3o+bU092G2lgnLHuTIIap7rtJ8p45TV9GQP1B63Kw==' crossorigin='anonymous'/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/js/bootstrap.bundle.min.js' integrity='sha512-43iShtbiyImxjjU4a9rhXBy7eKtIsrpll8xKhe1ghKqh5NyfME8phZs5JRFZpRBe1si44WM3tNmnqMym7JRmDQ==' crossorigin='anonymous'></script>

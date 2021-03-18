@@ -8,33 +8,24 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
-        <h1>Welcome to the Adlister!</h1>
-        <c:forEach var="ad" items="${ads}">
-            <div class="col-md-6">
-                <h2>${ad.title}</h2>
-                <p>${ad.description}</p>
-                <div>Comments</div>
-                <c:forEach var="category" items="${ad.categories}">
-                    <div class="col-md-6">
-                        <p>${category.getCategory()}</p>
-                    </div>
-                </c:forEach>
-                <c:forEach var="comment" items="${ad.comments}">
-                    <div class="col-md-6">
-                        <h2>${comment.userId}</h2>
-                        <p>${comment.content}</p>
-                    </div>
-                </c:forEach>
-                <c:forEach var="image" items="${ad.images}">
-                    <div class="col-md-6">
-                        <h2>${image.description}</h2>
-                        <img src="${image.url}"></img>
-                    </div>
-                </c:forEach>
+    <div class="container-fluid row">
+        <div class="d-none d-md-block p-3 col-4 ">
+            <h2>Categories</h2>
+            <ul class="navbar-nav">
+                
+            </ul>
+        </div>
 
-            </div>
-        </c:forEach>
+        <div class="col-8 pt-3 d-flex flex-wrap" id="adBoxes">
+            
+            <c:forEach var="ad" items="${ads}">
+                <jsp:include page="/WEB-INF/partials/adbox.jsp">
+                    <jsp:param name="imageurl" value="${ad.images[0].url}" />
+                    <jsp:param name="title" value="${ad.title}" />
+                    <jsp:param name="price" value="${ad.price}" />
+                </jsp:include>
+            </c:forEach>
+        </div>
     </div>
 </body>
 </html>
