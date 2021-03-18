@@ -26,7 +26,7 @@ public class MySQLPostsCategoriesDao implements PostsCategories{
     @Override
     public ArrayList<PostCategories> findByPostId(long postId) {
         try {
-            String query = "SELECT p.post_id, p.category_id, c.category FROM posts_categories as p join categories as c ON c.id= p.category_id WHERE post_id = ?";
+            String query = "SELECT p.post_id, p.category_id, c.category FROM ad_categories as p join categories as c ON c.id= p.category_id WHERE post_id = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, postId);
             ResultSet rs = stmt.executeQuery();
@@ -36,16 +36,13 @@ public class MySQLPostsCategoriesDao implements PostsCategories{
         }
     }
     @Override
-    public long insert(PostCategories postCategories){
+    public void insert(PostCategories postCategories){
         try {
-            String insertQuery = "INSERT INTO posts_categories(post_id, category_id) VALUES (?, ?)";
+            String insertQuery = "INSERT INTO ad_categories(post_id, category_id) VALUES (?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, postCategories.getPostId());
             stmt.setLong(2, postCategories.getCategoryId());
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }

@@ -30,11 +30,13 @@ public class MySQLCommentsDao implements Comments {
 
     @Override
     public List<Comment> all(int postId) {
-        String query = "SELECT * FROM comments WHERE post_id = postId";
+        String query = "SELECT * FROM comments WHERE post_id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, postId);
 //            stmt.setString(1, String.valueOf(postId));
-            return createCommentsResults(stmt.executeQuery());
+            ResultSet rs = stmt.executeQuery();
+            return createCommentsResults(rs);
         } catch(SQLException e){
             throw new RuntimeException("Error finding a user by username", e);
         }
@@ -43,7 +45,7 @@ public class MySQLCommentsDao implements Comments {
     @Override
     public Comment addComment(Comment newComment) {
         try {
-            String insertQuery = "INSERT INTO comments( userId, postId, content) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO comments( user_id, post_id, content) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
 //            stmt.setInt(1, newComment.getId());
             stmt.setInt(1, newComment.getUserId());
@@ -59,13 +61,13 @@ public class MySQLCommentsDao implements Comments {
     }
 
     private Comment extractComment(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
-            return null;
-        }
+//        if (! rs.next()) {
+//            return null;
+//        }
         return new Comment(
                 rs.getInt("id"),
-                rs.getInt("userId"),
-                rs.getInt("postId"),
+                rs.getInt("user_id"),
+                rs.getInt("post_id"),
                 rs.getString("content")
         );
     }
