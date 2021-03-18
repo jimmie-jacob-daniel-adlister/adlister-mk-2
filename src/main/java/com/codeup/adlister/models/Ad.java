@@ -1,10 +1,23 @@
 package com.codeup.adlister.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+
+
+
+    public void setImages(ArrayList<Image> images) {
+        this.images = images;
+    }
+
+    private ArrayList<PostCategories> categories;
+    private List<Comment> comments;
+    private ArrayList<Image> images;
 
 
 
@@ -73,5 +86,25 @@ public class Ad {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public ArrayList<PostCategories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(ArrayList<PostCategories> categories) {
+        this.categories = categories;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public ArrayList<Image> getImages() {
+        return images;
     }
 }

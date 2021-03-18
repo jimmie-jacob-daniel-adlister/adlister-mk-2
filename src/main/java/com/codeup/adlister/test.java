@@ -53,33 +53,44 @@ public class test {
 
 
 
+//        List<Ad> ads = DaoFactory.getAdsDao().all();
+//        for(Ad ad1 : ads){
+//            System.out.println("Title: "+ad1.getTitle());
+//            System.out.println("Description: "+ad1.getDescription());
+//            System.out.println("user id: "+ad1.getUserId());
+//            System.out.println("price: $"+ad1.getPrice());
+//            System.out.println("post id: "+ ad1.getId());
+//            long postId=ad1.getId();
+//            ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
+//            System.out.println("Categories: ");
+//            for (PostCategories postCategories : categories){
+//                System.out.println("   "+postCategories.getCategory());
+//            }
+//            ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
+//            System.out.println("Images: ");
+//            for (Image image: images){
+//                System.out.println("   Image description: "+ image.getDescription());
+//                System.out.println("   image link: "+ image.getUrl());
+//            }
+//            int commentsId= (int) postId;
+//            List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
+//            System.out.println("Comments");
+//            for (Comment comment : comments){
+//                System.out.println("   Post #"+comment.getPostId() +": "+comment.getUserId()+": "+ comment.getContent());
+//            }
+//        };
+
         List<Ad> ads = DaoFactory.getAdsDao().all();
-        for(Ad ad1 : ads){
-            System.out.println("Title: "+ad1.getTitle());
-            System.out.println("Description: "+ad1.getDescription());
-            System.out.println("user id: "+ad1.getUserId());
-            System.out.println("price: $"+ad1.getPrice());
-            System.out.println("post id: "+ ad1.getId());
-            long postId=ad1.getId();
+        for(Ad ad : ads){
+            long postId=ad.getId();
             ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
-            System.out.println("Categories: ");
-            for (PostCategories postCategories : categories){
-                System.out.println("   "+postCategories.getCategory());
-            }
+            ad.setCategories(categories);
             ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
-            System.out.println("Images: ");
-            for (Image image: images){
-                System.out.println("   Image description: "+ image.getDescription());
-                System.out.println("   image link: "+ image.getUrl());
-            }
+            ad.setImages(images);
             int commentsId= (int) postId;
             List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
-            System.out.println("Comments");
-            for (Comment comment : comments){
-                System.out.println("   Post #"+comment.getPostId() +": "+comment.getUserId()+": "+ comment.getContent());
-            }
+            ad.setComments(comments);
         };
-
 
 
 
