@@ -1,16 +1,16 @@
 package com.codeup.adlister.models;
 
 public class Comment {
-    private int id;
-    private int userId;
-    private int postId;
+    private long id;
+    private long userId;
+    private long postId;
     private String content;
 
     Comment(){
 
     }
 
-    public Comment(int id, int userId, int postId, String content) {
+    public Comment(long id, long userId, long postId, String content) {
         this.id = id;
         this.userId = userId;
         this.postId = postId;
@@ -18,22 +18,22 @@ public class Comment {
     }
 
 
-    public Comment(int userId, int postId, String content) {
+    public Comment(long userId, long postId, String content) {
         this.userId = userId;
         this.postId = postId;
         this.content = content;
     }
 
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public void setPostId(int postId) {
+    public void setPostId(long postId) {
         this.postId = postId;
     }
 
@@ -41,15 +41,15 @@ public class Comment {
         this.content = content;
     }
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return this.userId;
     }
 
-    public int getPostId() {
+    public long getPostId() {
         return this.postId;
     }
 

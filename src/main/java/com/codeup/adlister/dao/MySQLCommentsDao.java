@@ -48,8 +48,8 @@ public class MySQLCommentsDao implements Comments {
             String insertQuery = "INSERT INTO comments( user_id, post_id, content) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
 //            stmt.setInt(1, newComment.getId());
-            stmt.setInt(1, newComment.getUserId());
-            stmt.setInt(2, newComment.getPostId());
+            stmt.setLong(1, newComment.getUserId());
+            stmt.setLong(2, newComment.getPostId());
             stmt.setString(3, newComment.getContent());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
