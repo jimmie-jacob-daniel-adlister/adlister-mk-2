@@ -19,7 +19,6 @@ import java.util.List;
 public class LandingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         List<Ad> ads = DaoFactory.getAdsDao().all();
         for(Ad ad : ads){
             long postId=ad.getId();

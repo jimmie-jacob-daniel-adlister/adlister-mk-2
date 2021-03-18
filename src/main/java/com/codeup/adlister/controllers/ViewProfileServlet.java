@@ -25,15 +25,23 @@ public class ViewProfileServlet extends HttpServlet {
             long postId=ad.getId();
             ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
             ad.setCategories(categories);
-            System.out.println(ad.getCategories());
             ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
             ad.setImages(images);
-            System.out.println(ad.getImages());
             int commentsId= (int) postId;
             List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
             ad.setComments(ad.getComments());
         };
         request.setAttribute("ads", ads);
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String action   = request.getParameter("action");
+        String adNumber = request.getParameter("adNumber");
+//        if (action.equalsIgnoreCase("delete")){
+//
+//        }
+        System.out.println(action+" " + adNumber);
+        response.sendRedirect("/profile");
     }
 }
