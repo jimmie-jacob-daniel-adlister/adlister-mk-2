@@ -16,6 +16,7 @@ public class MySQLAdsDao implements Ads {
     public MySQLAdsDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
+            System.out.println(config.getURL());
             connection = DriverManager.getConnection(
                 config.getURL(),
                 config.getUsername(),
@@ -74,15 +75,12 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
     @Override
-    public Long delete(Ad ad){
+    public void delete(Long postId){
         try {
-            String insertQuery = "DELETE FROM posts WHERE user_id = ?";
+            String insertQuery = "DELETE FROM posts WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
+            stmt.setLong(1, postId);
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
