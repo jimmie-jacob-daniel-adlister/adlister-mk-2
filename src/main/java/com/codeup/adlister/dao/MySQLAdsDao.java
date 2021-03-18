@@ -73,4 +73,39 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+    @Override
+    public Long delete(Ad ad){
+        try {
+            String insertQuery = "DELETE FROM posts WHERE user_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad.getUserId());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
+
+    public Long edit(Ad ad){
+        try {
+            String insertQuery = "UPDATE table_name SET title = ?, content = ?, price=? WHERE user_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setDouble(3, ad.getPrice());
+            stmt.setLong(4, ad.getUserId());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+
+
+    }
+
+
 }
