@@ -15,4 +15,6 @@ public interface Ads {
     Long edit(Ad ad);
 
     List<Ad> search(String term);
+
+    List<Ad> byId(long id);
 }

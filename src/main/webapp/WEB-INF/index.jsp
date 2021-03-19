@@ -30,6 +30,7 @@
                 <jsp:include page="/WEB-INF/partials/adbox.jsp">
                     <jsp:param name="imageurl" value="${ad.images[0].url}" />
                     <jsp:param name="title" value="${ad.title}" />
+                    <jsp:param name="id" value="${ad.id}" />
                     <jsp:param name="price" value="${ad.price}" />
                 </jsp:include>
             </c:forEach>
