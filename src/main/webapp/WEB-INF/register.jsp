@@ -29,7 +29,7 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
-        <div>{sessionScope.invalid}</div>
+        <div>${sessionScope.invalid}</div>
     </div>
 </body>
 </html>

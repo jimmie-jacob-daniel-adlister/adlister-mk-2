@@ -12,33 +12,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
+@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
         }
+        request.setAttribute("action", "Create");
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
             .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(),
-                request.getParameter("title"),
-                request.getParameter("description"),
-                Double.parseDouble(request.getParameter("price"))
-        );
-        Long postId=DaoFactory.getAdsDao().insert(ad);
-        Image image = new Image(
-                postId,
-                request.getParameter("imageURL"),
-                request.getParameter("imageDescription")
-        );
-        DaoFactory.getImagesDao().insert(image);
-        response.sendRedirect("/");
+        String action= request.getParameter("action");
+        if (action.equals("Create")) {
+            User user = (User) request.getSession().getAttribute("user");
+            Ad ad = new Ad(
+                    user.getId(),
+                    request.getParameter("title"),
+                    request.getParameter("description"),
+                    Double.parseDouble(request.getParameter("price"))
+            );
+            Long postId = DaoFactory.getAdsDao().insert(ad);
+            Image image = new Image(
+                    postId,
+                    request.getParameter("imageURL"),
+                    request.getParameter("imageDescription")
+            );
+            DaoFactory.getImagesDao().insert(image);
+            response.sendRedirect("/");
+        } else{
+            User user = (User) request.getSession().getAttribute("user");
+            Ad ad = new Ad(
+                    Long.parseLong(request.getParameter("id")),
+                    user.getId(),
+                    request.getParameter("title"),
+                    request.getParameter("description"),
+                    Double.parseDouble(request.getParameter("price"))
+            );
+            Image image = new Image(
+                    Long.parseLong(request.getParameter("imageId")),
+                    Long.parseLong(request.getParameter("id")),
+                    request.getParameter("imageURL"),
+                    request.getParameter("imageDescription")
+            );
+            DaoFactory.getImagesDao().edit(image);
+            DaoFactory.getAdsDao().edit(ad);
+            response.sendRedirect("/profile");
+
+
+        }
     }
 
 

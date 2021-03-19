@@ -12,7 +12,7 @@ public interface Ads {
     //delete a selected ad
     void delete(Long postId);
 
-    Long edit(Ad ad);
+    void edit(Ad ad);
 
     List<Ad> search(String term);
 
