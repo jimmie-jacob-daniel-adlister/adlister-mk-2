@@ -33,6 +33,7 @@
                     <jsp:param name="title" value="${ad.title}" />
                     <jsp:param name="id" value="${ad.id}" />
                     <jsp:param name="price" value="${ad.price}" />
+
                 </jsp:include>
             </c:forEach>
         </div>
