@@ -10,5 +10,6 @@ public interface Users {
     User findByUsername(String username);
     Long insert(User user);
     List<Ad> allUserAds(Long UserId);
+    String findByUserId(Long userId);
 }
 

@@ -46,7 +46,7 @@ public class CreateCommentServlet extends HttpServlet{
         DaoFactory.getCommentsDao().addComment(comment);
 //        request.setAttribute("id", postId);
 //        request.getRequestDispatcher("/WEB-INF/post.jsp").forward(request, response);
-        response.sendRedirect("/post");
+        response.sendRedirect("/post?id="+postId);
 
 
 

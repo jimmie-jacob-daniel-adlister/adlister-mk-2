@@ -37,7 +37,13 @@ public class PostServlet extends HttpServlet {
                 ad.setImages(images);
                 int commentsId= (int) postId;
                 List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
+                for (Comment comment: comments){
+                    Long userId=comment.getUserId();
+                    String username = DaoFactory.getUsersDao().findByUserId(userId);
+                    comment.setUsername(username);
+                }
                 ad.setComments(comments);
+
             };
     
             request.setAttribute("post", posts.get(0));
