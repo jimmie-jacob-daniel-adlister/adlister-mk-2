@@ -61,7 +61,12 @@
         </p>
         <h3>Comments</h3>
         <c:forEach var="comment" items="${post.comments}">
-            <div>${comment.username}: ${comment.content}</div>
+            <div class="comment-box p-3 mt-3">
+                <h6>${comment.username}:</h6>
+                <hr>
+                <p>${comment.content}</p>
+
+            </div>
         </c:forEach>
         <c:if test="${sessionScope.user.id!=null}">
         <form class="form-inline" action="/add-comment" method="POST">
