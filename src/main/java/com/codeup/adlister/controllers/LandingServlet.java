@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.Comment;
 import com.codeup.adlister.models.Image;
 import com.codeup.adlister.models.PostCategories;
@@ -20,6 +21,7 @@ public class LandingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Ad> ads = DaoFactory.getAdsDao().all();
+        List<Category> categoriesList = DaoFactory.getCategoryDao().all();
         for(Ad ad : ads){
             long postId=ad.getId();
             ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
@@ -32,6 +34,7 @@ public class LandingServlet extends HttpServlet {
         };
 
         request.setAttribute("ads", ads);
+        request.setAttribute("categories", categoriesList);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 
     }

@@ -20,20 +20,17 @@
                 <li class="nav-item px-2 ">
                     <a class="nav-link text-white active " aria-current="page" href="#">Home</a>
                 </li>
-                
-                <c:choose>
-                    <c:if test="${empty param.loggedin}">
-                        <li class="nav-item px-2">
-                            <a class="nav-link text-white" href="#">Login</a>
-                        </li>
-                    </c:if>    
-                    <c:if test="${not empty param.loggedin}">
-                        <li class="nav-item px-2">
-                            <a class="nav-link text-white" href="#">Profile</a>
-                        </li>
-                    </c:if>   
-                </c:choose>
-               
+                <!-- Test if logged in -->
+                <c:if test="${empty param.loggedin}">
+                    <li class="nav-item px-2">
+                        <a class="nav-link text-white" href="#">Login</a>
+                    </li>
+                </c:if>    
+                <c:if test="${not empty param.loggedin}">
+                    <li class="nav-item px-2">
+                        <a class="nav-link text-white" href="#">Profile</a>
+                    </li>
+                </c:if>   
             </ul>
         </div>
     </div>

@@ -5,18 +5,21 @@
     <jsp:include page="/WEB-INF/partials/head.jsp" />
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" >
+        <jsp:param name="loggedin" value="" />
+    </jsp:include>
+    
 
 
     <div class="container-fluid row">
         <div class="d-none d-md-block p-3 col-4 ">
             <h2>Categories</h2>
             <ul class="navbar-nav">
-                <c:foreach var="ad" items="${ads}" >
+                <c:forEach var="cat" items="${categories}" >
                     <jsp:include page="/WEB-INF/partials/categoryItem.jsp">
-                        <jsp:param name="price" value="${ad.price}" />
+                        <jsp:param name="name" value="${cat.category}" />
                     </jsp:include>
-                </c:foreach>
+                </c:forEach>
                 
             </ul>
         </div>
