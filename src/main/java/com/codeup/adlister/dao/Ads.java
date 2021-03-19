@@ -19,4 +19,6 @@ public interface Ads {
     List<Ad> byId(long id);
     public Ad getAdFromPostId(Long postId);
 
+    Ad getAdFromPostId(Long postId);
+
 }

@@ -2,21 +2,33 @@ User roles:
 Visitor:
   1. Views all ads - check
   2. search for ads - backend need test
-  3. view individual ad
+  3. view individual ad - check
   4. View profile page - checked
 
 Users:
 ALL OF THE PREVIOUS and
   5. Make ads - check
-  6. Make profile (on registration)
+  6. Make profile (on registration) - IGNORE
   7. View ads made by user - check
   8. delete ads made by user - on backend
   9. Update ads made by user
   10. log in - check
   11. log out - theoritcally yes
-  12. Add Comments to posts -
+  12. Add Comments to posts - back end working. testing front
 
 Admins:
 ALL OF THE PREVIOUS and
   13. Update any ads
   14. Delete any ads
+
+  CORE functionality
+
+    - page that shows individual ad and user info (picture?)- check
+    - ads index has link to individual - check
+    - search functionality
+    - show user's ads on their profile - check
+    - make sure that usernames are unique in db
+    - Update (front-end not connected) and delete ad
+
+    other stuff
+    - update profile information?
