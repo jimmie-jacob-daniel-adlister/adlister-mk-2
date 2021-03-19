@@ -7,6 +7,9 @@
     </jsp:include>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" >
+    <jsp:param name="loggedin" value="" />
+</jsp:include>
 <div class="card container">
     <h2>${action} ad</h2>
     <form action="/create" method="POST">
