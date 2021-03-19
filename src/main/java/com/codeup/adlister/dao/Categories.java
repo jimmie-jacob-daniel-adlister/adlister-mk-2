@@ -10,4 +10,3 @@ import java.util.List;
 public interface Categories {
     Long insert(User user);
     List<Category> all();
-}
