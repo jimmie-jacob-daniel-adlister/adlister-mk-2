@@ -98,10 +98,12 @@ public class test {
 //
 //    //String hashedPassword="$2a$12$Fbm47FETSxu083hgKNPwUO5ACrBJ/vHuAKrcHtKjabdQHXN.sMTAS";
 //    String hashedPassword="$2a$12$EB7i6A0P2GP0g/AzFjpd8u5I5GmItmGkqJN.DogOzSf6OCq5yGnB.";
-        String password= "password";
-        String hashedPassword= "$2a$10$lgrBVGk2mmUyS48vlEcKPeTDp7GBNwghtsAuw2iowm8mH4NSr5AX.";
-        boolean validAttempt = Password.check(password, hashedPassword);
-        System.out.println(validAttempt);
+
+        List<Ad> ads = DaoFactory.getAdsDao().search("Cha");
+        for (Ad ad : ads){
+            System.out.println(ad.getTitle());
+        }
+
 
 
 
