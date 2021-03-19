@@ -12,6 +12,11 @@
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
+    <div class="container">
+        <p>Want to create a post?</p>
+        <a href="/create" class="btn btn-primary btn-block">Yes</a>
+    </div>
+
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
             <h2>${ad.title}</h2>
