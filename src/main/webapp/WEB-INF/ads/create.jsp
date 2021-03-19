@@ -39,14 +39,17 @@
         </div>
 
         <div class="form-group">
-            <label for="category">Category</label>
-            <select name="category" id="category">
-                <option value="null">--</option>
-                <option value="free">Free</option>
-                <option value="antiques">Antiques</option>
-                <option value="appliances">Appliances</option>
-                <option value="arts + craft">Arts + Craft</option>
-                <option value="auto Parts">auto Parts</option>
+            <label for="categories">Category</label>
+            <select name="categories" id="categories" multiple>
+                <c:forEach var="category" items="${categories}" varStatus="loop">
+                    <option value="${loop.index}">${category.category}</option>
+                </c:forEach>
+<%--                <option value="null">--</option>--%>
+<%--                <option value="free">Free</option>--%>
+<%--                <option value="antiques">Antiques</option>--%>
+<%--                <option value="appliances">Appliances</option>--%>
+<%--                <option value="arts + craft">Arts + Craft</option>--%>
+<%--                <option value="auto Parts">auto Parts</option>--%>
             </select>
         </div>
         <input type="hidden" name="action" value="${action}" />
