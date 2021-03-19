@@ -20,8 +20,12 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
+        <h1>Don't have a login? Register below!</h1>
+        <form action="/register" method="POST">
+            <input type="hidden" name="register" value="register" />
+            <input type="submit" class="btn btn-primary btn-block" value="Register">
+        </form>
 
-        <img src="img/unnamed.jpg" alt="" width="500">
     </div>
 </body>
 </html>

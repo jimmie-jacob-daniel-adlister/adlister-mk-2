@@ -90,10 +90,24 @@ public class MySQLAdsDao implements Ads {
     @Override
     public void delete(Long postId){
         try {
-            String insertQuery = "DELETE FROM posts WHERE id = ?";
+            System.out.println("deleting "+postId);
+            String insertQuery = "DELETE FROM ad_categories WHERE post_id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, postId);
             stmt.executeUpdate();
+            System.out.println("deleting "+postId);
+            String insertQuery1 = "DELETE FROM images WHERE post_id = ?";
+            PreparedStatement stmt1 = connection.prepareStatement(insertQuery1, Statement.RETURN_GENERATED_KEYS);
+            stmt1.setLong(1, postId);
+            stmt1.executeUpdate();
+            String insertQuery2 = "DELETE FROM comments WHERE post_id = ?";
+            PreparedStatement stmt2 = connection.prepareStatement(insertQuery2, Statement.RETURN_GENERATED_KEYS);
+            stmt2.setLong(1, postId);
+            stmt2.executeUpdate();
+            String insertQuery3 = "DELETE FROM posts WHERE id = ?";
+            PreparedStatement stmt3 = connection.prepareStatement(insertQuery3, Statement.RETURN_GENERATED_KEYS);
+            stmt3.setLong(1, postId);
+            stmt3.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }

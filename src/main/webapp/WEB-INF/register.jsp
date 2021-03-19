@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,6 +29,7 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
+        <div>{sessionScope.invalid}</div>
     </div>
 </body>
 </html>
