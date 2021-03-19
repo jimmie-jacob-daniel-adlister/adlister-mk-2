@@ -1,9 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.Image;
-import com.codeup.adlister.models.User;
+import com.codeup.adlister.models.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/create")
 public class CreateAdServlet extends HttpServlet {
@@ -20,6 +20,8 @@ public class CreateAdServlet extends HttpServlet {
             return;
         }
         request.setAttribute("action", "Create");
+        List<Category> categoriesList = DaoFactory.getCategoryDao().all();
+        request.setAttribute("categories", categoriesList);
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
             .forward(request, response);
     }
@@ -41,6 +43,11 @@ public class CreateAdServlet extends HttpServlet {
                     request.getParameter("imageDescription")
             );
             DaoFactory.getImagesDao().insert(image);
+            String[] categories=request.getParameterValues("categories");
+            for (int i=0; i<categories.length; i++){
+                PostCategories postCategories = new PostCategories(postId, (Long.parseLong(categories[i])+1));
+                DaoFactory.getPostsCategoriesDao().insert(postCategories);
+            }
             response.sendRedirect("/");
         } else{
             User user = (User) request.getSession().getAttribute("user");

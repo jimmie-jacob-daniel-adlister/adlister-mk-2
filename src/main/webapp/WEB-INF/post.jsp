@@ -59,7 +59,14 @@
         <p class="py-4 px-2">
             ${post.description}
         </p>
+        <h3>Categories</h3>
+        <div>
+        <c:forEach var="category" items="${post.categories}">
+            ${category.category}
+        </c:forEach>
+        </div>
         <h3>Comments</h3>
+
         <c:forEach var="comment" items="${post.comments}">
             <div class="comment-box p-3 mt-3">
                 <h6>${comment.username}:</h6>
