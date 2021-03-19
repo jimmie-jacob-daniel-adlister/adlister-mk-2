@@ -16,5 +16,6 @@ public interface Ads {
 
     List<Ad> search(String term);
 
-    Ad getAdFromPostId(Long postId);
+    List<Ad> byId(long id);
+
 }

@@ -2,45 +2,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Welcome to my site!" />
-    </jsp:include>
+    <jsp:include page="/WEB-INF/partials/head.jsp" />
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
-        <h1>Welcome to the Adlister!</h1>
-        <c:forEach var="ad" items="${ads}">
-            <div class="col-md-6">
-                <h2>${ad.title}</h2>
-                <p>${ad.description}</p>
-                <div>Comments</div>
-                <c:forEach var="category" items="${ad.categories}">
-                    <div class="col-md-6">
-                        <p>${category.getCategory()}</p>
-                    </div>
-                </c:forEach>
-
-                <c:forEach var="image" items="${ad.images}">
-                    <div class="col-md-6">
-                        <h2>${image.description}</h2>
-                        <img src="${image.url}"></img>
-                    </div>
-                </c:forEach>
-                <c:forEach var="comment" items="${ad.comments}">
-                    <div class="col-md-6">
-                        <h2>${comment.userId}</h2>
-                        <p>${comment.content}</p>
-                    </div>
-                </c:forEach>
-                <form method="POST" action="/add-comment">
-                    <input type="hidden" name="postId" value="${ad.id}" />
-                    <button>Comment</button>
-                </form>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" >
+        <jsp:param name="loggedin" value="" />
+    </jsp:include>
+    
 
 
-            </div>
-        </c:forEach>
+    <div class="container-fluid row">
+        <div class="d-none d-md-block p-3 col-4 ">
+            <h2>Categories</h2>
+            <ul class="navbar-nav">
+                <c:forEach var="cat" items="${categories}" >
+                    <jsp:include page="/WEB-INF/partials/categoryItem.jsp">
+                        <jsp:param name="name" value="${cat.category}" />
+                    </jsp:include>
+                </c:forEach>
+                
+            </ul>
+        </div>
+
+
+        <div class="col-8 pt-3 d-flex flex-wrap" id="adBoxes">
+            
+            <c:forEach var="ad" items="${ads}">
+                <jsp:include page="/WEB-INF/partials/adbox.jsp">
+                    <jsp:param name="imageurl" value="${ad.images[0].url}" />
+                    <jsp:param name="title" value="${ad.title}" />
+                    <jsp:param name="id" value="${ad.id}" />
+                    <jsp:param name="price" value="${ad.price}" />
+                </jsp:include>
+            </c:forEach>
+        </div>
     </div>
 </body>
 </html>

@@ -9,12 +9,20 @@ public class DaoFactory {
     private static Config config = new Config();
     private static Images imagesDao;
     private static PostsCategories postsCategoriesDao;
+    private static Categories categoryDao;
 
     public static Ads getAdsDao() {
         if (adsDao == null) {
             adsDao = new MySQLAdsDao(config);
         }
         return adsDao;
+    }
+
+    public static Categories getCategoryDao() {
+        if (categoryDao == null) {
+            categoryDao = new MySQLCategoriesDao(config);
+        }
+        return categoryDao;
     }
 
     public static Users getUsersDao() {
