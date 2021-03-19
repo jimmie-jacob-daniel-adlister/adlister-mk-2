@@ -13,6 +13,7 @@
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" class="form-control">
         </div>
+
         <div class="form-group">
             <label for="price">Price: $</label>
             <input type="text" name="price" id="price" class="form-control">
@@ -23,10 +24,28 @@
             <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
         </div>
 
-<%--        <div class="form-group">--%>
-<%--            <label for="imageURL">Image URL:</label>--%>
-<%--            <input type="text" id="imageURL" name="imageURL" class="form-control">--%>
-<%--        </div>--%>
+        <div class="form-group">
+            <label for="imageURL">Image URL:</label>
+            <input type="text" id="imageURL" name="imageURL" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="imageDescription">Image Description:</label>
+            <input type="text" id="imageDescription" name="imageDescription" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select name="category" id="category">
+                <option value="null">--</option>
+                <option value="free">Free</option>
+                <option value="antiques">Antiques</option>
+                <option value="appliances">Appliances</option>
+                <option value="arts + craft">Arts + Craft</option>
+                <option value="auto Parts">auto Parts</option>
+            </select>
+        </div>
+
         <input type="submit" class="btn btn-block btn-primary" />
     </form>
 </div>

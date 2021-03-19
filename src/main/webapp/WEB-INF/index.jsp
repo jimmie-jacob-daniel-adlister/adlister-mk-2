@@ -24,6 +24,7 @@
             </ul>
         </div>
 
+
         <div class="col-8 pt-3 d-flex flex-wrap" id="adBoxes">
             
             <c:forEach var="ad" items="${ads}">

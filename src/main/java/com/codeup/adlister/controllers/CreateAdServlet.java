@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Image;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -30,8 +31,14 @@ public class CreateAdServlet extends HttpServlet {
                 request.getParameter("description"),
                 Double.parseDouble(request.getParameter("price"))
         );
-        DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
+        Long postId=DaoFactory.getAdsDao().insert(ad);
+        Image image = new Image(
+                postId,
+                request.getParameter("imageURL"),
+                request.getParameter("imageDescription")
+        );
+        DaoFactory.getImagesDao().insert(image);
+        response.sendRedirect("/");
     }
 
 

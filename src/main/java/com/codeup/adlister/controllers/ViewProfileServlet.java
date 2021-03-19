@@ -29,7 +29,7 @@ public class ViewProfileServlet extends HttpServlet {
             ad.setImages(images);
             int commentsId= (int) postId;
             List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
-            ad.setComments(ad.getComments());
+            ad.setComments(comments);
         };
         request.setAttribute("ads", ads);
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
@@ -38,9 +38,9 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String action   = request.getParameter("action");
         String adNumber = request.getParameter("adNumber");
-//        if (action.equalsIgnoreCase("delete")){
-//
-//        }
+        if (action.equalsIgnoreCase("delete")){
+            DaoFactory.getAdsDao().delete(Long.parseLong(adNumber));
+        }
         System.out.println(action+" " + adNumber);
         response.sendRedirect("/profile");
     }

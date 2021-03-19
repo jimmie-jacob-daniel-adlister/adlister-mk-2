@@ -16,6 +16,7 @@ public class MySQLAdsDao implements Ads {
     public MySQLAdsDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
+            System.out.println(config.getURL());
             connection = DriverManager.getConnection(
                 config.getURL(),
                 config.getUsername(),
@@ -87,15 +88,12 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
     @Override
-    public Long delete(Ad ad){
+    public void delete(Long postId){
         try {
-            String insertQuery = "DELETE FROM posts WHERE user_id = ?";
+            String insertQuery = "DELETE FROM posts WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
+            stmt.setLong(1, postId);
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
@@ -135,6 +133,28 @@ public class MySQLAdsDao implements Ads {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public Ad getAdFromPostId(Long postId) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM posts WHERE id=?");
+            stmt.setLong(1, postId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                return new Ad(
+                        rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getDouble("price")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
     }
 
 
