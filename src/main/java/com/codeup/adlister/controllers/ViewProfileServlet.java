@@ -23,6 +23,7 @@ public class ViewProfileServlet extends HttpServlet {
         List<Ad> ads = DaoFactory.getUsersDao().allUserAds(user.getId());
         for(Ad ad : ads){
             long postId=ad.getId();
+            System.out.println(postId);
             ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
             ad.setCategories(categories);
             ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
