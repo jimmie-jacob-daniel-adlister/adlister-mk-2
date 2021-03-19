@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Image;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.api.mysqla.result.Resultset;
@@ -70,6 +71,21 @@ public class MySQLImagesDao implements Images{
         return images;
     }
 
+    public void edit(Image image){
+        try {
+            String insertQuery = "UPDATE images SET post_id=?, url = ?, description = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, image.getPostId());
+            stmt.setString(2, image.getUrl());
+            stmt.setString(3, image.getDescription());
+            stmt.setDouble(4, image.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+
+
+    }
 
 }
 

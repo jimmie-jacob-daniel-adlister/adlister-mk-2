@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.*;
+import com.mysql.cj.api.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +42,11 @@ public class ViewProfileServlet extends HttpServlet {
         String adNumber = request.getParameter("adNumber");
         if (action.equalsIgnoreCase("delete")){
             DaoFactory.getAdsDao().delete(Long.parseLong(adNumber));
+        } else if (action.equalsIgnoreCase("edit")){
+            request.getSession().setAttribute("edit", Long.parseLong(adNumber));
+            System.out.println("Sending it over to edit");
+            response.sendRedirect("/edit");
+            return;
         }
         System.out.println(action+" " + adNumber);
         response.sendRedirect("/profile");

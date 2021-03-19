@@ -39,6 +39,11 @@
                 <input type="hidden" name="adNumber" value="${ad.id}" />
                 <button>Delete</button>
             </form>
+            <form method="POST" action="/profile">
+                <input type="hidden" name="action" value="edit" />
+                <input type="hidden" name="adNumber" value="${ad.id}" />
+                <button>edit</button>
+            </form>
 
         </div>
     </c:forEach>
