@@ -27,8 +27,7 @@ public class PostServlet extends HttpServlet {
         try{
             String idInput = request.getParameter("id");
             long id = Long.valueOf(idInput);
-    
-    
+            System.out.println("id: "+id);
             List<Ad> posts = DaoFactory.getAdsDao().byId( (long) id);
             for(Ad ad : posts){
                 long postId=ad.getId();

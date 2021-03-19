@@ -59,6 +59,22 @@
         <p class="py-4 px-2">
             ${post.description}
         </p>
+        <h3>Comments</h3>
+        <c:forEach var="comment" items="${post.comments}">
+            <div>${comment.userId}: ${comment.content}</div>
+        </c:forEach>
+        <c:if test="${sessionScope.user.id!=null}">
+        <form class="form-inline" action="/add-comment" method="POST">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" name="content" id="content" placeholder="Leave a comment...">
+                <input type="hidden" name="postId" value="${post.id}" />
+                <input type="hidden" name="userId" value="${sessionScope.user.id}" />
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Comment</button>
+        </form>
+        </c:if>
+
+
     </div>
 </body>
 </html>

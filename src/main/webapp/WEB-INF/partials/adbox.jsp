@@ -10,6 +10,8 @@
         <div class="p-2 border rounded-bottom">
             <h4>${param.title}</h4>
             <div>${param.price}</div>
+
+
         </div>
     </a>
 </div>

@@ -15,19 +15,19 @@ import java.util.List;
 @WebServlet (name = "CreateCommentServlet", urlPatterns = "/add-comment")
 public class CreateCommentServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        Long postId = (Long)request.getSession().getAttribute("postId");
-        System.out.println("get "+postId);
-        User user = (User) request.getSession().getAttribute("user");
-        Ad ad = DaoFactory.getAdsDao().getAdFromPostId(postId);
-        ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
-        ad.setCategories(categories);
-        ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
-        ad.setImages(images);
-        String postIdString=postId.toString();
-        int commentId=Integer.parseInt(postIdString);
-        List<Comment> comments=DaoFactory.getCommentsDao().all(commentId);
-        ad.setComments(comments);
-        request.setAttribute("ad", ad);
+//        Long postId = (Long)request.getSession().getAttribute("postId");
+//        System.out.println("get "+postId);
+//        User user = (User) request.getSession().getAttribute("user");
+//        Ad ad = DaoFactory.getAdsDao().getAdFromPostId(postId);
+//        ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
+//        ad.setCategories(categories);
+//        ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
+//        ad.setImages(images);
+//        String postIdString=postId.toString();
+//        int commentId=Integer.parseInt(postIdString);
+//        List<Comment> comments=DaoFactory.getCommentsDao().all(commentId);
+//        ad.setComments(comments);
+//        request.setAttribute("ad", ad);
 
 //        Comment newComment = new Comment(
 //                user.getId(),
@@ -38,10 +38,15 @@ public class CreateCommentServlet extends HttpServlet{
         request.getRequestDispatcher("/WEB-INF/add-comment.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Long postId=Long.parseLong(request.getParameter("postId"));
-        request.getSession().setAttribute("postId", postId);
-        System.out.println("post "+postId);
+        Long userId=Long.parseLong(request.getParameter("userId"));
+        String content=request.getParameter("content");
+        Comment comment = new Comment(userId, postId, content);
+        DaoFactory.getCommentsDao().addComment(comment);
+//        request.setAttribute("id", postId);
+//        request.getRequestDispatcher("/WEB-INF/post.jsp").forward(request, response);
+        response.sendRedirect("/post");
 
 
 
@@ -51,6 +56,6 @@ public class CreateCommentServlet extends HttpServlet{
 //                request.getParameter("content")
 //        );
 //        DaoFactory.getCommentsDao().addComment(newComment);
-       response.sendRedirect("/add-comment");
+//       response.sendRedirect("/add-comment");
     }
 }
