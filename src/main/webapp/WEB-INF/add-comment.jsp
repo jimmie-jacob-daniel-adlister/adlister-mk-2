@@ -9,9 +9,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add-Comment</title>
+    <jsp:include page="/WEB-INF/partials/head.jsp" />
 </head>
 <body>
+
+<jsp:include page="/WEB-INF/partials/navbar.jsp" >
+    <jsp:param name="loggedin" value=""/>
+</jsp:include>
+
 <div class="container">
     <h2>Add a comment</h2>
     <h2>${ad.title}</h2>

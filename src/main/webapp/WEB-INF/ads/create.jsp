@@ -1,12 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Create a new Ad" />
-    </jsp:include>
+    <jsp:include page="/WEB-INF/partials/head.jsp" />
 </head>
 <body>
-<div class="card container">
+
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" >
+        <jsp:param name="loggedin" value=""/>
+    </jsp:include>
+    
+<div class="card container mt-4">
     <h2>New ad</h2>
     <form action="/ads/create" method="POST">
         <div class="form-group">
