@@ -66,6 +66,14 @@ public class CreateAdServlet extends HttpServlet {
             );
             DaoFactory.getImagesDao().edit(image);
             DaoFactory.getAdsDao().edit(ad);
+
+            String[] categories=request.getParameterValues("categories");
+            Long postId= Long.parseLong(request.getParameter("id"));
+            DaoFactory.getPostsCategoriesDao().delete(postId);
+            for (int i=0; i<categories.length; i++){
+                PostCategories postCategories = new PostCategories(postId, (Long.parseLong(categories[i])+1));
+                DaoFactory.getPostsCategoriesDao().insert(postCategories);
+            }
             response.sendRedirect("/profile");
 
 
