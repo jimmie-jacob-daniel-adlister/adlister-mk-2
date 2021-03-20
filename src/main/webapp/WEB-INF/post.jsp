@@ -37,14 +37,12 @@
     <!-- User info hides at lg-->
     <div class="bg-white rounded m-3 p-3 border d-none d-lg-block" style="z-index:3;position:absolute; right:0 ;transform: translate(0,-160px); width:300px">
         <div class="d-flex">
-            <img class="rounded my-2" style="width:70px" src="img/profile.webp" alt="profile-img">
-            <h4 class="my-2 p-3">Username</h4>
+<%--            <img class="rounded my-2" style="width:70px" src="img/profile.webp" alt="profile-img">--%>
+            <h4 class="my-2 p-3">${adCreator.username}</h4>
         </div>
-        <button class="w-100 my-2 btn btn-primary">
-            Profile
-        </button>
+        <a href="/profile?username=${adCreator.username}"><button class="w-100 my-2 btn btn-primary">Profile</button></a>
         <button class="w-100  btn btn-secondary">
-            Contact
+            ${adCreator.email}
         </button>
     </div>
 
@@ -52,6 +50,11 @@
 
     <div class="container m-auto p-4" >
         <h2 class="px-2">${post.title}</h2>
+<%--            <div class="col-6">--%>
+<%--                <div>Post Username: ${adCreator.username}</div>--%>
+<%--                <div>Post Contact: ${adCreator.email} </div>--%>
+<%--                <div>Visit ${adCreator.username}'s profile to view his other posts: <a href="/profile?username=${adCreator.username}">View</a></div>--%>
+<%--            </div>--%>
         <hr>
         <h5 class="px-2">
             ${post.price}

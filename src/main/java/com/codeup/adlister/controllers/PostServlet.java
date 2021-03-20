@@ -1,11 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.Category;
-import com.codeup.adlister.models.Comment;
-import com.codeup.adlister.models.Image;
-import com.codeup.adlister.models.PostCategories;
+import com.codeup.adlister.models.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,10 +41,14 @@ public class PostServlet extends HttpServlet {
                 ad.setComments(comments);
 
             };
-    
+
             request.setAttribute("post", posts.get(0));
-            
-    
+
+            String username = DaoFactory.getUsersDao().findByUserId(id);
+            User adCreator = DaoFactory.getUsersDao().findByUsername(username);
+            request.setAttribute("adCreator", adCreator);
+
+
             request.getRequestDispatcher("/WEB-INF/post.jsp").forward(request, response);
         }catch(Exception e){
             request.setAttribute("error", "Post not found");
