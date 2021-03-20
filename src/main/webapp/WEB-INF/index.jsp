@@ -15,9 +15,14 @@
         <div class="d-none d-md-block p-3 col-4 ">
             <h2>Categories</h2>
             <ul class="navbar-nav">
+                <jsp:include page="/WEB-INF/partials/categoryItem.jsp">
+                    <jsp:param name="name" value="all" />
+
+                </jsp:include>
                 <c:forEach var="cat" items="${categories}" >
                     <jsp:include page="/WEB-INF/partials/categoryItem.jsp">
                         <jsp:param name="name" value="${cat.category}" />
+
                     </jsp:include>
                 </c:forEach>
                 

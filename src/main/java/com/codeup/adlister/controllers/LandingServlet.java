@@ -33,7 +33,36 @@ public class LandingServlet extends HttpServlet {
             ad.setComments(comments);
         };
 
-        request.setAttribute("ads", ads);
+        String category = request.getParameter("category");
+        ArrayList<Ad> filteredAds= new ArrayList<>();
+        if (category!= null){
+            if (category.equalsIgnoreCase("all")){
+                for (Ad ad : ads){
+                    filteredAds.add(ad);
+                }
+            } else {
+                for (Ad ad : ads) {
+                    ArrayList<PostCategories> adCategories = ad.getCategories();
+                    int counter = 0;
+                    for (PostCategories categories : adCategories) {
+                        if (categories.getCategory().equalsIgnoreCase(category)) {
+                            counter++;
+                        }
+                    }
+                    if (counter > 0) {
+                        System.out.println(ad.getTitle());
+                        filteredAds.add(ad);
+                    }
+                }
+            }
+        } else{
+            for (Ad ad : ads){
+                filteredAds.add(ad);
+            }
+        }
+
+
+        request.setAttribute("ads", filteredAds);
         request.setAttribute("categories", categoriesList);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 

@@ -25,8 +25,15 @@ public class EditAdServlet extends HttpServlet {
         System.out.println(postId);
         ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
         ad.setCategories(categories);
+        String allCategories="Categories: ";
+        for (PostCategories category: categories){
+            allCategories=allCategories+category.getCategory();
+        }
+        request.setAttribute("selectedCategories", allCategories);
         ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
         ad.setImages(images);
+        List<Category> categoriesList = DaoFactory.getCategoryDao().all();
+        request.setAttribute("categories", categoriesList);
         request.setAttribute("ad", ad);
         request.setAttribute("action", "Edit");
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")

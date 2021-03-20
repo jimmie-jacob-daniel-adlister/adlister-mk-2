@@ -64,4 +64,18 @@ public class MySQLPostsCategoriesDao implements PostsCategories{
         }
         return categories;
     }
+    @Override
+    public void delete(Long postId ){
+        try {
+            System.out.println("deleting "+postId);
+            String insertQuery = "DELETE FROM ad_categories WHERE post_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, postId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+
+
+    }
 }

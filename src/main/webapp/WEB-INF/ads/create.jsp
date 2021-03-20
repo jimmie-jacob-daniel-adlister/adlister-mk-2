@@ -42,7 +42,14 @@
             <label for="categories">Category</label>
             <select name="categories" id="categories" multiple>
                 <c:forEach var="category" items="${categories}" varStatus="loop">
-                    <option value="${loop.index}">${category.category}</option>
+                    <c:choose>
+                    <c:when test="${selectedCategories.contains(category.category)}">
+                        <option value="${loop.index}" selected>${category.category}</option>
+                    </c:when>
+                        <c:otherwise>
+                            <option value="${loop.index}">${category.category}</option>
+                        </c:otherwise>
+                    </c:choose>
                 </c:forEach>
 <%--                <option value="null">--</option>--%>
 <%--                <option value="free">Free</option>--%>
