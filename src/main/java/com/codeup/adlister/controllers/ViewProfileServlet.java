@@ -16,11 +16,18 @@ import java.util.List;
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
+        String username=request.getParameter("username");
+        if (request.getSession().getAttribute("user") == null && username==null){
             response.sendRedirect("/login");
             return;
         }
-        User user = (User) request.getSession().getAttribute("user");
+        User user = new User();
+        if (username!=null){
+            user = DaoFactory.getUsersDao().findByUsername(username);
+        } else {
+             user = (User) request.getSession().getAttribute("user");
+        }
+        System.out.println(user.getUsername());
         List<Ad> ads = DaoFactory.getUsersDao().allUserAds(user.getId());
         for(Ad ad : ads){
             long postId=ad.getId();
@@ -34,6 +41,7 @@ public class ViewProfileServlet extends HttpServlet {
             ad.setComments(comments);
         };
         request.setAttribute("ads", ads);
+        request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
 

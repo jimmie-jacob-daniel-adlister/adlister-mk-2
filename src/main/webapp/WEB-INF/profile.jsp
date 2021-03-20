@@ -10,12 +10,14 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1>${user.username}'s Profile</h1>
     </div>
-    <div class="container">
-        <p>Want to create a post?</p>
-        <a href="/create" class="btn btn-primary btn-block">Yes</a>
-    </div>
+    <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">
+        <div class="container">
+            <p>Want to create a post?</p>
+            <a href="/create" class="btn btn-primary btn-block">Yes</a>
+        </div>
+    </c:if>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
@@ -39,16 +41,18 @@
                     <img src="${image.url}"></img>
                 </div>
             </c:forEach>
-            <form method="POST" action="/profile">
-                <input type="hidden" name="action" value="delete" />
-                <input type="hidden" name="adNumber" value="${ad.id}" />
-                <button>Delete</button>
-            </form>
-            <form method="POST" action="/profile">
-                <input type="hidden" name="action" value="edit" />
-                <input type="hidden" name="adNumber" value="${ad.id}" />
-                <button>edit</button>
-            </form>
+            <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">
+                <form method="POST" action="/profile">
+                    <input type="hidden" name="action" value="delete"/>
+                    <input type="hidden" name="adNumber" value="${ad.id}"/>
+                    <button>Delete</button>
+                </form>
+                <form method="POST" action="/profile">
+                    <input type="hidden" name="action" value="edit"/>
+                    <input type="hidden" name="adNumber" value="${ad.id}"/>
+                    <button>edit</button>
+                </form>
+            </c:if>
 
         </div>
     </c:forEach>

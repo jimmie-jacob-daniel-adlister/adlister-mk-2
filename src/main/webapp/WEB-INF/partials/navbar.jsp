@@ -7,7 +7,8 @@
         <form action="/search" class="d-flex">
             <input class="form-control" type="text" name="term" placeholder="Search"/>
             <button class="btn btn-primary ms-2">
-                <i class="fas fa-search"></i>
+<%--                <i class="fas fa-search"></i>--%>
+                Search
             </button>
         </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
