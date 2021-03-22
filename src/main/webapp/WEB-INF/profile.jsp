@@ -8,6 +8,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/message.jsp" />
 
     <div class="container" id="profile-header">
         <h1>${user.username}'s Profile</h1>

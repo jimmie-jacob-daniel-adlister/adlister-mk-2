@@ -8,8 +8,6 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" >
         <jsp:param name="loggedin" value="" />
     </jsp:include>
-    
-    <jsp:include page="/WEB-INF/partials/message.jsp" />
 
     <div class="container-fluid row">
         <div class="d-none d-md-block p-3 col-4 col-lg-2">
@@ -28,8 +26,6 @@
                 
             </ul>
         </div>
-
-
         <div class="col-8 col-lg-10 pt-3 d-flex flex-wrap" id="adBoxes">
             
             <c:forEach var="ad" items="${ads}">
