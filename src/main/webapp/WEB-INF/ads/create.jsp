@@ -10,7 +10,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" >
     <jsp:param name="loggedin" value="" />
 </jsp:include>
-<div class="card container">
+<div class="card container" id="add-post">
     <h2>${action} ad</h2>
     <form action="/create" method="POST">
         <div class="form-group">
@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label for="categories">Category</label>
-            <select name="categories" id="categories" multiple>
+            <select name="categories" id="categories" multiple class="rounded">
                 <c:forEach var="category" items="${categories}" varStatus="loop">
                     <c:choose>
                     <c:when test="${selectedCategories.contains(category.category)}">

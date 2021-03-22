@@ -21,6 +21,7 @@ public class ViewProfileServlet extends HttpServlet {
         if (request.getSession().getAttribute("user") == null ){
             request.setAttribute("error", "You are not logged in");
             response.sendRedirect("/login");
+            return;
         }
 
         String username = request.getParameter("username");

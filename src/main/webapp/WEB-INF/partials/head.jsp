@@ -37,13 +37,17 @@
         text-align: center;
     }
 
+    #add-post {
+        margin-top: 25px;
+    }
+
     @media screen and (min-width: 768px) {
         #adBoxes {
             margin: 0px;
         }
 
         #cardContainer {
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
     }
 </style>

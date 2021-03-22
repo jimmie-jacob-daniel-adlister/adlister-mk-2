@@ -12,12 +12,12 @@
 
     <div class="container" id="profile-header">
         <h1>${user.username}'s Profile</h1>
-        <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">
-            <div class="cardContainer">
-                <p>Want to create a post?</p>
-                <a href="/create" class="btn btn-primary btn-block">Yes</a>
-            </div>
-        </c:if>
+<%--        <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">--%>
+<%--            <div class="cardContainer">--%>
+<%--                <p>Want to create a post?</p>--%>
+<%--                <a href="/create" class="btn btn-primary btn-block">Yes</a>--%>
+<%--            </div>--%>
+<%--        </c:if>--%>
     </div>
 <div id="cardContainer">
     <c:forEach var="ad" items="${ads}">
