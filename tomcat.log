@@ -1,0 +1,21 @@
+Using CATALINA_BASE:   /usr/share/tomcat9
+Using CATALINA_HOME:   /usr/share/tomcat9
+Using CATALINA_TMPDIR: /usr/share/tomcat9/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /usr/share/tomcat9/bin/bootstrap.jar:/usr/share/tomcat9/bin/tomcat-juli.jar
+Using CATALINA_OPTS:   
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false

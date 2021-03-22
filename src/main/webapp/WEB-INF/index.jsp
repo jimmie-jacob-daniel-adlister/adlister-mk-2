@@ -9,7 +9,7 @@
         <jsp:param name="loggedin" value="" />
     </jsp:include>
     
-
+    <jsp:include page="/WEB-INF/partials/message.jsp" />
 
     <div class="container-fluid row">
         <div class="d-none d-md-block p-3 col-4 col-lg-2">
