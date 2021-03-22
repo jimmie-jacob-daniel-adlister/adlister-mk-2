@@ -70,7 +70,7 @@ public class ViewProfileServlet extends HttpServlet {
                     ad.setComments(comments);
                 };
                 request.setAttribute("ads", ads);
-                request.setAttribute("user", user);
+                request.setAttribute("user", request.getSession().getAttribute("user"));
                 request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
             }
         }
