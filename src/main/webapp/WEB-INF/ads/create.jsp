@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label for="categories">Category</label>
-            <select name="categories" id="categories" multiple>
+            <select name="categories" id="categories" multiple class="rounded">
                 <c:forEach var="category" items="${categories}" varStatus="loop">
                     <c:choose>
                     <c:when test="${selectedCategories.contains(category.category)}">

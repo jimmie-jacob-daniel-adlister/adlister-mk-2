@@ -41,10 +41,6 @@
         margin-top: 25px;
     }
 
-    #add-post select {
-        width: 100%;
-    }
-
     @media screen and (min-width: 768px) {
         #adBoxes {
             margin: 0px;
