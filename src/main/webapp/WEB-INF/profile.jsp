@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
+   <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
 </head>
@@ -18,44 +18,56 @@
             <a href="/create" class="btn btn-primary btn-block">Yes</a>
         </div>
     </c:if>
-
+<div id="cardContainer">
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
-            <c:forEach var="category" items="${ad.categories}">
-                <div class="col-md-6">
-                    <p>${category.getCategory()}</p>
-                </div>
-            </c:forEach>
-            <div>Comments</div>
-            <c:forEach var="comment" items="${ad.comments}">
-                <div class="col-md-6">
-                    <h2>${comment.userId}</h2>
-                    <p>${comment.content}</p>
-                </div>
-            </c:forEach>
+        <div class="card" style="width: 18rem;">
             <c:forEach var="image" items="${ad.images}">
-                <div class="col-md-6">
-                    <h2>${image.description}</h2>
-                    <img src="${image.url}"></img>
-                </div>
+                <img class="card-img-top" src="${image.url}" alt="Card image cap"></img>
             </c:forEach>
+                <div class="card-body">
+                    <h5 class="card-title">${ad.title}</h5>
+                    <p>${ad.description}</p>
+                    <p>
+                        Categories:
+                        <c:forEach var="category" items="${ad.categories}">
+                            ${category.getCategory()}
+                        </c:forEach>
+                    </p>
+                </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Comments: ${ad.comments.size()} comments
+                </li>
+                <c:forEach var="comment" items="${ad.comments}">
+                    <li class="list-group-item">
+                            ${comment.userId} : ${comment.content}
+                    </li>
+                </c:forEach>
+            </ul>
+
+
             <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">
-                <form method="POST" action="/profile">
-                    <input type="hidden" name="action" value="delete"/>
-                    <input type="hidden" name="adNumber" value="${ad.id}"/>
-                    <button>Delete</button>
-                </form>
-                <form method="POST" action="/profile">
-                    <input type="hidden" name="action" value="edit"/>
-                    <input type="hidden" name="adNumber" value="${ad.id}"/>
-                    <button>edit</button>
-                </form>
+                <div class="card-body row">
+                    <div class="col-6">
+                        <form method="POST" action="/profile">
+                            <input type="hidden" name="action" value="delete"/>
+                            <input type="hidden" name="adNumber" value="${ad.id}"/>
+                            <button>Delete</button>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <form method="POST" action="/profile">
+                            <input type="hidden" name="action" value="edit"/>
+                            <input type="hidden" name="adNumber" value="${ad.id}"/>
+                            <button>edit</button>
+                        </form>
+                    </div>
+                </div>
             </c:if>
 
         </div>
     </c:forEach>
+</div>
 
 </body>
 </html>
