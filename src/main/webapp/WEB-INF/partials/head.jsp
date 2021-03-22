@@ -7,4 +7,14 @@
         border: 1px solid black;
         background: whitesmoke;
     }
+    #cardContainer{
+        margin: 25px;
+        padding: 15px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #cardContainer>div{
+        margin: 15px;
+    }
 </style>
