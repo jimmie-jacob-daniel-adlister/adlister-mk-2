@@ -4,18 +4,45 @@ Using CATALINA_TMPDIR: /usr/share/tomcat9/temp
 Using JRE_HOME:        /usr
 Using CLASSPATH:       /usr/share/tomcat9/bin/bootstrap.jar:/usr/share/tomcat9/bin/tomcat-juli.jar
 Using CATALINA_OPTS:   
+password entered password
+valid attempt: true
+1
+7
+31
+1
+7
+31
 jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+id: 10
+password entered password
+valid attempt: true
+1
+7
+31
 jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
-jdbc:mysql://totinos.ddns.net/adlister?serverTimezone=UTC&useSSL=false
+id: 34
+1
+7
+31
+id: 37
+1
+7
+31
+id: 43
+1
+7
+31
+id: 44
+1
+7
+31
+id: 41
+1
+7
+31
+1
+7
+31
+1
+7
+31

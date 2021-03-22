@@ -17,12 +17,6 @@ import java.util.List;
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //checks if user was passed in
-        if(request.getParameter("username") != null){
-            request.setAttribute("error", "No user specified");
-            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-        }
-
         //checks if youre not logged in
         if (request.getSession().getAttribute("user") == null ){
             request.setAttribute("error", "You are not logged in");
@@ -51,11 +45,10 @@ public class ViewProfileServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
 
         }catch(Exception e){
-            request.setAttribute("error", e.toString());
             //if the request fails to grab a profile by a username, fallback to your own user
             if(request.getSession().getAttribute("user") != null){
                 //sets the user session to be the attribute for user. 
-                request.setAttribute("user", request.getSession().getAttribute("user"));
+                User user =  (User) request.getSession().getAttribute("user");
 
                 List<Ad> ads = DaoFactory.getUsersDao().allUserAds(user.getId());
                 for(Ad ad : ads){
@@ -70,7 +63,10 @@ public class ViewProfileServlet extends HttpServlet {
                     ad.setComments(comments);
                 };
                 request.setAttribute("ads", ads);
-                request.setAttribute("user", request.getSession().getAttribute("user"));
+                request.setAttribute("user", user );
+                request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+            }else{
+                request.setAttribute("error", e.toString());
                 request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
             }
         }
