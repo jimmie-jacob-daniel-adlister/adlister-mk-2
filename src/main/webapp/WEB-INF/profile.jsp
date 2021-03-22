@@ -9,15 +9,15 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
+    <div class="container" id="profile-header">
         <h1>${user.username}'s Profile</h1>
+        <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">
+            <div class="cardContainer">
+                <p>Want to create a post?</p>
+                <a href="/create" class="btn btn-primary btn-block">Yes</a>
+            </div>
+        </c:if>
     </div>
-    <c:if test="${sessionScope.user.username.equalsIgnoreCase(user.username)}">
-        <div class="container">
-            <p>Want to create a post?</p>
-            <a href="/create" class="btn btn-primary btn-block">Yes</a>
-        </div>
-    </c:if>
 <div id="cardContainer">
     <c:forEach var="ad" items="${ads}">
         <div class="card" >
@@ -58,14 +58,14 @@
                         <form method="POST" action="/profile">
                             <input type="hidden" name="action" value="delete"/>
                             <input type="hidden" name="adNumber" value="${ad.id}"/>
-                            <button>Delete</button>
+                            <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>
                     <div class="col-6">
                         <form method="POST" action="/profile">
                             <input type="hidden" name="action" value="edit"/>
                             <input type="hidden" name="adNumber" value="${ad.id}"/>
-                            <button>edit</button>
+                            <button class="btn btn-warning">edit</button>
                         </form>
                     </div>
                 </div>
