@@ -20,7 +20,8 @@
     </c:if>
 <div id="cardContainer">
     <c:forEach var="ad" items="${ads}">
-        <div class="card" style="width: 18rem;">
+        <div class="card" >
+<%--            style="width: 18rem;"--%>
             <c:forEach var="image" items="${ad.images}">
                 <img class="card-img-top" src="${image.url}" alt="Card image cap"></img>
             </c:forEach>
@@ -38,11 +39,16 @@
                 <li class="list-group-item">
                     Comments: ${ad.comments.size()} comments
                 </li>
-                <c:forEach var="comment" items="${ad.comments}">
+                <a href="post?id=${ad.id}"/>
                     <li class="list-group-item">
-                            ${comment.userId} : ${comment.content}
-                    </li>
-                </c:forEach>
+                    View Post and Comments
+                </li>
+                </a>
+<%--                <c:forEach var="comment" items="${ad.comments}">--%>
+<%--                    <li class="list-group-item">--%>
+<%--                            ${comment.userId} : ${comment.content}--%>
+<%--                    </li>--%>
+<%--                </c:forEach>--%>
             </ul>
 
 
