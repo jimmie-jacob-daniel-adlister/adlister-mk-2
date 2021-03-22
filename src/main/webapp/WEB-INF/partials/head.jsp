@@ -41,9 +41,14 @@
         margin-top: 25px;
     }
 
+    .form-inline {
+        border: 1px solid black;
+    }
+
     @media screen and (min-width: 768px) {
         #adBoxes {
             margin: 0px;
+            justify-content: space-between;
         }
 
         #cardContainer {
