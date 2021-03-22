@@ -16,38 +16,80 @@ import java.util.List;
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username=request.getParameter("username");
-        if (request.getSession().getAttribute("user") == null && username==null){
+
+        //checks if user was passed in
+        if(request.getParameter("username") != null){
+            request.setAttribute("error", "No user specified");
+            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        }
+
+        //checks if youre not logged in
+        if (request.getSession().getAttribute("user") == null ){
+            request.setAttribute("error", "You are not logged in");
             response.sendRedirect("/login");
-            return;
         }
-        User user = new User();
-        if (username!=null){
-            user = DaoFactory.getUsersDao().findByUsername(username);
-        } else {
-             user = (User) request.getSession().getAttribute("user");
+
+        String username = request.getParameter("username");
+        
+        try{
+            User user = DaoFactory.getUsersDao().findByUsername(username);
+
+            List<Ad> ads = DaoFactory.getUsersDao().allUserAds(user.getId());
+            for(Ad ad : ads){
+                long postId=ad.getId();
+                System.out.println(postId);
+                ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
+                ad.setCategories(categories);
+                ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
+                ad.setImages(images);
+                int commentsId= (int) postId;
+                List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
+                ad.setComments(comments);
+            };
+            request.setAttribute("ads", ads);
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+
+        }catch(Exception e){
+            request.setAttribute("error", e.toString());
+            //if the request fails to grab a profile by a username, fallback to your own user
+            if(request.getSession().getAttribute("user") != null){
+                //sets the user session to be the attribute for user. 
+                request.setAttribute("user", request.getSession().getAttribute("user"));
+
+                List<Ad> ads = DaoFactory.getUsersDao().allUserAds(user.getId());
+                for(Ad ad : ads){
+                    long postId=ad.getId();
+                    System.out.println(postId);
+                    ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
+                    ad.setCategories(categories);
+                    ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
+                    ad.setImages(images);
+                    int commentsId= (int) postId;
+                    List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
+                    ad.setComments(comments);
+                };
+                request.setAttribute("ads", ads);
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+            }
         }
-        System.out.println(user.getUsername());
-        List<Ad> ads = DaoFactory.getUsersDao().allUserAds(user.getId());
-        for(Ad ad : ads){
-            long postId=ad.getId();
-            System.out.println(postId);
-            ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
-            ad.setCategories(categories);
-            ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
-            ad.setImages(images);
-            int commentsId= (int) postId;
-            List<Comment> comments=DaoFactory.getCommentsDao().all(commentsId);
-            ad.setComments(comments);
-        };
-        request.setAttribute("ads", ads);
-        request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+
+        
+        
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
         String action   = request.getParameter("action");
         String adNumber = request.getParameter("adNumber");
+
+        if(action == null || adNumber == null){
+            request.setAttribute("error", "Error with request, ad not found.");
+            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        }
+
+        //checks the action and ad you are working on
         if (action.equalsIgnoreCase("delete")){
             DaoFactory.getAdsDao().delete(Long.parseLong(adNumber));
         } else if (action.equalsIgnoreCase("edit")){
