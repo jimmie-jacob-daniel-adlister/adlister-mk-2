@@ -16,5 +16,10 @@
 
     #cardContainer>div{
         margin: 15px;
+        width: 18rem;
+    }
+    #cardContainer img{
+        height: 50%;
+        object-fit: contain;
     }
 </style>
