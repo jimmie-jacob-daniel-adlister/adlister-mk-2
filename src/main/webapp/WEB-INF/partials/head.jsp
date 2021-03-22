@@ -22,4 +22,15 @@
         height: 50%;
         object-fit: contain;
     }
+
+    #adBoxes {
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    @media screen and (min-width: 768px) {
+        #adBoxes {
+            margin: 0px;
+        }
+    }
 </style>

@@ -12,7 +12,7 @@
 
 
     <div class="container-fluid row">
-        <div class="d-none d-md-block p-3 col-4 ">
+        <div class="d-none d-md-block p-3 col-4 col-lg-2">
             <h2>Categories</h2>
             <ul class="navbar-nav">
                 <jsp:include page="/WEB-INF/partials/categoryItem.jsp">
@@ -30,7 +30,7 @@
         </div>
 
 
-        <div class="col-8 pt-3 d-flex flex-wrap" id="adBoxes">
+        <div class="col-8 col-lg-10 pt-3 d-flex flex-wrap" id="adBoxes">
             
             <c:forEach var="ad" items="${ads}">
                 <jsp:include page="/WEB-INF/partials/adbox.jsp">
