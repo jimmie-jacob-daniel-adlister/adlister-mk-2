@@ -25,8 +25,10 @@ public class PostServlet extends HttpServlet {
             long id = Long.valueOf(idInput);
             System.out.println("id: "+id);
             List<Ad> posts = DaoFactory.getAdsDao().byId( (long) id);
+            long usernameId=0;
             for(Ad ad : posts){
                 long postId=ad.getId();
+                usernameId=ad.getUserId();
                 ArrayList<PostCategories> categories = DaoFactory.getPostsCategoriesDao().findByPostId(postId);
                 ad.setCategories(categories);
                 ArrayList<Image> images = DaoFactory.getImagesDao().findByPostId(postId);
@@ -43,8 +45,8 @@ public class PostServlet extends HttpServlet {
             };
 
             request.setAttribute("post", posts.get(0));
-
-            String username = DaoFactory.getUsersDao().findByUserId(id);
+            System.out.println(usernameId);
+            String username = DaoFactory.getUsersDao().findByUserId(usernameId);
             User adCreator = DaoFactory.getUsersDao().findByUsername(username);
             request.setAttribute("adCreator", adCreator);
 
